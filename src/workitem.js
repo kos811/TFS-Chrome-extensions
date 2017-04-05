@@ -20,6 +20,7 @@ function addButtonsToContainer(container) {
 	addCopyCommitTitleButton(container);
 	addCopyLinkButton(container);
 	addCopyBranchButton(container);
+	addPullRequestButton(container);
 }
 
 function addCopyTitleButton(container) {
@@ -43,6 +44,13 @@ function addCopyLinkButton(container) {
 function addCopyBranchButton(container) {
 	addButton(container, "Branch", "Copy branch name", function() {
 		executeCopy(getBranchName());
+	});
+}
+
+function addPullRequestButton(container) {
+	addButton(container, "Pull Request", "Prepares message for PR", function() {
+		var title = getLinkElement().innerText + " " + getTitleElement().innerText + "\r\n" + getLinkElement().href;
+		executeCopy(title);
 	});
 }
 
